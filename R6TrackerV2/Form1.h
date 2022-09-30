@@ -27,6 +27,7 @@ namespace CppCLRWinFormsProject {
 		{
 			InitializeComponent();
 			pictureBox1->Image = Image::FromFile("img/"+rank+".png"); //img/ + rank number + .png
+			this->Icon = gcnew System::Drawing::Icon(L"img/R6Tracker.ico");
 			//
 			//TODO: Add the constructor code here
 			//
@@ -182,7 +183,7 @@ namespace CppCLRWinFormsProject {
 			// KillsValueText
 			// 
 			this->KillsValueText->AutoSize = true;
-			this->KillsValueText->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->KillsValueText->BackColor = System::Drawing::Color::Transparent;
 			this->KillsValueText->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->KillsValueText->ForeColor = System::Drawing::Color::Snow;
@@ -207,7 +208,7 @@ namespace CppCLRWinFormsProject {
 			// KillsText
 			// 
 			this->KillsText->AutoSize = true;
-			this->KillsText->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->KillsText->BackColor = System::Drawing::Color::Transparent;
 			this->KillsText->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->KillsText->ForeColor = System::Drawing::Color::Snow;
@@ -220,7 +221,7 @@ namespace CppCLRWinFormsProject {
 			// DeathsText
 			// 
 			this->DeathsText->AutoSize = true;
-			this->DeathsText->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->DeathsText->BackColor = System::Drawing::Color::Transparent;
 			this->DeathsText->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->DeathsText->ForeColor = System::Drawing::Color::Snow;
@@ -233,7 +234,7 @@ namespace CppCLRWinFormsProject {
 			// DeathsValueText
 			// 
 			this->DeathsValueText->AutoSize = true;
-			this->DeathsValueText->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->DeathsValueText->BackColor = System::Drawing::Color::Transparent;
 			this->DeathsValueText->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->DeathsValueText->ForeColor = System::Drawing::Color::Snow;
@@ -246,7 +247,7 @@ namespace CppCLRWinFormsProject {
 			// AssistsText
 			// 
 			this->AssistsText->AutoSize = true;
-			this->AssistsText->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->AssistsText->BackColor = System::Drawing::Color::Transparent;
 			this->AssistsText->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->AssistsText->ForeColor = System::Drawing::Color::Snow;
@@ -259,7 +260,7 @@ namespace CppCLRWinFormsProject {
 			// AssistsValueText
 			// 
 			this->AssistsValueText->AutoSize = true;
-			this->AssistsValueText->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->AssistsValueText->BackColor = System::Drawing::Color::Transparent;
 			this->AssistsValueText->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->AssistsValueText->ForeColor = System::Drawing::Color::Snow;
@@ -272,7 +273,7 @@ namespace CppCLRWinFormsProject {
 			// KDText
 			// 
 			this->KDText->AutoSize = true;
-			this->KDText->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->KDText->BackColor = System::Drawing::Color::Transparent;
 			this->KDText->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->KDText->ForeColor = System::Drawing::Color::Snow;
@@ -285,7 +286,7 @@ namespace CppCLRWinFormsProject {
 			// KDValueText
 			// 
 			this->KDValueText->AutoSize = true;
-			this->KDValueText->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->KDValueText->BackColor = System::Drawing::Color::Transparent;
 			this->KDValueText->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->KDValueText->ForeColor = System::Drawing::Color::Snow;
@@ -297,9 +298,9 @@ namespace CppCLRWinFormsProject {
 			// 
 			// pictureBox1
 			// 
-			this->pictureBox1->Location = System::Drawing::Point(39, 15);
+			this->pictureBox1->Location = System::Drawing::Point(38, 29);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(74, 98);
+			this->pictureBox1->Size = System::Drawing::Size(74, 84);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox1->TabIndex = 10;
 			this->pictureBox1->TabStop = false;
@@ -307,7 +308,7 @@ namespace CppCLRWinFormsProject {
 			// WinsText
 			// 
 			this->WinsText->AutoSize = true;
-			this->WinsText->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->WinsText->BackColor = System::Drawing::Color::Transparent;
 			this->WinsText->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->WinsText->ForeColor = System::Drawing::Color::Snow;
@@ -320,7 +321,7 @@ namespace CppCLRWinFormsProject {
 			// WinsValueText
 			// 
 			this->WinsValueText->AutoSize = true;
-			this->WinsValueText->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->WinsValueText->BackColor = System::Drawing::Color::Transparent;
 			this->WinsValueText->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->WinsValueText->ForeColor = System::Drawing::Color::Snow;
@@ -333,7 +334,7 @@ namespace CppCLRWinFormsProject {
 			// LossesText
 			// 
 			this->LossesText->AutoSize = true;
-			this->LossesText->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->LossesText->BackColor = System::Drawing::Color::Transparent;
 			this->LossesText->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->LossesText->ForeColor = System::Drawing::Color::Snow;
@@ -346,7 +347,7 @@ namespace CppCLRWinFormsProject {
 			// LossesValueText
 			// 
 			this->LossesValueText->AutoSize = true;
-			this->LossesValueText->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->LossesValueText->BackColor = System::Drawing::Color::Transparent;
 			this->LossesValueText->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->LossesValueText->ForeColor = System::Drawing::Color::Snow;
@@ -359,7 +360,7 @@ namespace CppCLRWinFormsProject {
 			// WRText
 			// 
 			this->WRText->AutoSize = true;
-			this->WRText->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->WRText->BackColor = System::Drawing::Color::Transparent;
 			this->WRText->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->WRText->ForeColor = System::Drawing::Color::Snow;
@@ -372,7 +373,7 @@ namespace CppCLRWinFormsProject {
 			// WRValueText
 			// 
 			this->WRValueText->AutoSize = true;
-			this->WRValueText->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->WRValueText->BackColor = System::Drawing::Color::Transparent;
 			this->WRValueText->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->WRValueText->ForeColor = System::Drawing::Color::Snow;
@@ -410,7 +411,8 @@ namespace CppCLRWinFormsProject {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(15)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(43)));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->ClientSize = System::Drawing::Size(416, 306);
 			this->Controls->Add(this->MMRValueText);
@@ -435,7 +437,7 @@ namespace CppCLRWinFormsProject {
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->MaximizeBox = false;
 			this->Name = L"Form1";
-			this->Text = L"Form1";
+			this->Text = L"R6TrackerV2";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
