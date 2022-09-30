@@ -26,7 +26,7 @@ namespace CppCLRWinFormsProject {
 		Form1(void)
 		{
 			InitializeComponent();
-			pictureBox1->Image = Image::FromFile("img/Unranked.png");
+			pictureBox1->Image = Image::FromFile("img/"+rank+".png"); //img/ + rank number + .png
 			//
 			//TODO: Add the constructor code here
 			//
@@ -52,6 +52,9 @@ namespace CppCLRWinFormsProject {
 	private: System::Windows::Forms::Label^ WRText;
 	private: System::Windows::Forms::Label^ WRValueText;
 	private: System::Windows::Forms::Label^ ExpValueText;
+	private: System::Windows::Forms::Label^ MMRValueText;
+
+
 
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
 
@@ -103,6 +106,9 @@ namespace CppCLRWinFormsProject {
 		UINT lvlXp = 3000;
 		UINT lvl = 1;
 
+		int mmr = 1100;
+		int rank = 0;
+
 		//match values result
 		UINT matchKills = 0;
 		UINT matchDeaths = 0;
@@ -111,6 +117,8 @@ namespace CppCLRWinFormsProject {
 
 		void MatchResult();
 		void LvlSystem();
+
+		void CalculateRank();
 
 		/// <summary>
 		/// Required designer variable.
@@ -145,6 +153,7 @@ namespace CppCLRWinFormsProject {
 			this->WRText = (gcnew System::Windows::Forms::Label());
 			this->WRValueText = (gcnew System::Windows::Forms::Label());
 			this->ExpValueText = (gcnew System::Windows::Forms::Label());
+			this->MMRValueText = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -288,9 +297,9 @@ namespace CppCLRWinFormsProject {
 			// 
 			// pictureBox1
 			// 
-			this->pictureBox1->Location = System::Drawing::Point(39, 30);
+			this->pictureBox1->Location = System::Drawing::Point(39, 15);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(74, 83);
+			this->pictureBox1->Size = System::Drawing::Size(74, 98);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox1->TabIndex = 10;
 			this->pictureBox1->TabStop = false;
@@ -385,6 +394,18 @@ namespace CppCLRWinFormsProject {
 			this->ExpValueText->TabIndex = 17;
 			this->ExpValueText->Text = L"0/0";
 			// 
+			// MMRValueText
+			// 
+			this->MMRValueText->AutoSize = true;
+			this->MMRValueText->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->MMRValueText->ForeColor = System::Drawing::SystemColors::ButtonFace;
+			this->MMRValueText->Location = System::Drawing::Point(36, 125);
+			this->MMRValueText->Name = L"MMRValueText";
+			this->MMRValueText->Size = System::Drawing::Size(40, 17);
+			this->MMRValueText->TabIndex = 18;
+			this->MMRValueText->Text = L"MMR";
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -392,6 +413,7 @@ namespace CppCLRWinFormsProject {
 			this->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->ClientSize = System::Drawing::Size(416, 306);
+			this->Controls->Add(this->MMRValueText);
 			this->Controls->Add(this->ExpValueText);
 			this->Controls->Add(this->WRText);
 			this->Controls->Add(this->WRValueText);
@@ -434,7 +456,7 @@ namespace CppCLRWinFormsProject {
 			//Resolve base address of the pointer
 			PlayerAddr = moduleBase + 0x06EB6348;
 			MatchAddr = moduleBase + 0x06E72A88;
-			OnMatchAddr = moduleBase + 0x77E923C;
+			OnMatchAddr = moduleBase + 0x06E72A70;
 			TCHAR filename[MAX_PATH];
 			if (GetModuleFileNameExW(hProcess, NULL, filename, MAX_PATH))
 			{
@@ -454,8 +476,8 @@ namespace CppCLRWinFormsProject {
 	private: System::Void ScanValues_Tick(System::Object^ sender, System::EventArgs^ e) {
 
 
-		std::vector<unsigned int> emptyOffsets;
-		uintptr_t OnMatchAddress = p.FindDMAAddy(hProcess, OnMatchAddr, emptyOffsets);
+		std::vector<unsigned int> OnMatchOffsets = { 0xF38 };
+		uintptr_t OnMatchAddress = p.FindDMAAddy(hProcess, OnMatchAddr, OnMatchOffsets);
 		char onMatch;
 		ReadProcessMemory(hProcess, (BYTE*)OnMatchAddress, &onMatch, sizeof(char), nullptr);
 		if(onMatch == 1)
@@ -474,6 +496,8 @@ namespace CppCLRWinFormsProject {
 				WriteProcessMemory(hProcess, (BYTE*)expAddress, &resetExp, sizeof(resetExp), 0);
 
 				MatchResult();
+
+				CalculateRank();
 
 			}
 
@@ -548,6 +572,7 @@ namespace CppCLRWinFormsProject {
 		WRValueText->Text = wr().ToString("f2");
 		LvlText->Text = "Lvl: " + lvl;
 		ExpValueText->Text = "Exp: " + totalXp + "/" + lvlXp;
+		MMRValueText->Text = "MMR: " + mmr;
 	}
 };
 }
@@ -557,5 +582,5 @@ For update:
 -Read first the exp value (1 final value on scan)
 -Find kills, deaths and assist with structures
 -Find W/L values on SP matchs and after on custom game (4 final values)
--On Match value is static (4 final values, 1 static)
+-On Match value (4 final values, 1 static does not working)
 */

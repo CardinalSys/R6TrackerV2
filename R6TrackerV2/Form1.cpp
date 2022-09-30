@@ -29,11 +29,13 @@ void CppCLRWinFormsProject::Form1::MatchResult()
 	{
 		tempResult = 10;
 		losses++;
+		mmr -= 100;
 	}
 	else if (tempResult == 1)
 	{
 		tempResult = 10;
 		wins++;
+		mmr += 100;
 	}
 }
 
@@ -45,5 +47,29 @@ void CppCLRWinFormsProject::Form1::LvlSystem()
 		lvlXp += (int)(lvlXp * 0.7);
 		lvl++;
 	}
+}
+
+void CppCLRWinFormsProject::Form1::CalculateRank()
+{
+    int min = 0, max = 100;
+    bool finish = false;
+    int multiplier = 0;
+
+    while (!finish)
+    {
+        if (mmr < 0)
+            mmr == 0;
+        else if (mmr >= min && mmr < max)
+        {
+            finish = true;
+            break;
+        }
+		rank++;
+		min += 100;
+		max += 100;
+
+    }
+	pictureBox1->Image = Image::FromFile("img/" + rank + ".png");
+
 }
 
